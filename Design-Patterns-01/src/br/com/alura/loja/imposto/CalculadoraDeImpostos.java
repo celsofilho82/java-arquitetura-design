@@ -6,17 +6,21 @@ import br.com.alura.loja.orcamento.Orcamento;
 
 public class CalculadoraDeImpostos {
 
-	public BigDecimal calcular(Orcamento orcamento, TipoImposto tipoImposto) {
+	/**
+	 * Como diminuir a complexidade do nosso código, trocando múltiplas condicionais
+	 * por classes: Esta técnica é chamada de Strategy, que é um dos padrões de
+	 * projeto
+	 * 
+	 * Utilizamos o padrão de projeto chamado Strategy para resolver o problema do
+	 * cálculo de impostos. Este padrão pode ser utilizado quando há diversos
+	 * possíveis algoritmos para uma ação (como calcular imposto, por exemplo).
+	 * Nele, nós separamos cada um dos possíveis algoritmos em classes separadas.
+	 * 
+	 */
 
-		switch (tipoImposto) {
-		case ICMS:
-			return orcamento.getValor().multiply(new BigDecimal("0.1"));
-		case ISS:
-			return orcamento.getValor().multiply(new BigDecimal("0.06"));
-		default:
-			return BigDecimal.ZERO;
-		}
+	public BigDecimal calcular(Orcamento orcamento, Imposto imposto) {
 
+		return imposto.calcular(orcamento);
 	}
 
 }
