@@ -1,35 +1,47 @@
 package br.com.alura.service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.List;
 
-import br.com.alura.rh.ValidacaoException;
 import br.com.alura.rh.model.Funcionario;
 
 /**
  * 
- * @author celso 
- * Essa classe foi criada para melhorar a coesão da classe
- * funcionário extraindo dela o método que calcula o reajuste do
- * salário. Refatoramos a classe e criamos um Service cujo a única 
- * responsabilidade é fazer o reajuste do salário deixando a regra 
- * de negôcio isolada.
+ * @author celso Essa classe foi criada para melhorar a coesï¿½o da classe
+ *         funcionï¿½rio extraindo dela o mï¿½todo que calcula o reajuste do
+ *         salï¿½rio. Refatoramos a classe e criamos um Service cujo a ï¿½nica
+ *         responsabilidade ï¿½ fazer o reajuste do salï¿½rio deixando a regra de
+ *         negï¿½cio isolada.
  * 
- * Nessa refatoração aplicamos o primeiro principio do SOLID que é
- * a letra S = Single Responsibility.
- * Que é o principio da responsabilidade única.
- * Que define que uma classe (ou módulo, função, etc) deve ter 
- * um e apenas um motivo para mudar
+ *         Nessa refatoraï¿½ï¿½o aplicamos o primeiro principio do SOLID que ï¿½ a
+ *         letra S = Single Responsibility. Que ï¿½ o principio da
+ *         responsabilidade ï¿½nica. Que define que uma classe (ou mï¿½dulo, funï¿½ï¿½o,
+ *         etc) deve ter um e apenas um motivo para mudar
+ * 
+ *         Nessa refatoraÃ§Ã£o encontramos um problema na classe ReajusteService.
+ *         Enquanto novas validaÃ§Ãµes de reajuste fossem criadas, novas condiÃ§Ãµes
+ *         deveriam ser adicionadas a esta classe, fazendo-a crescer
+ *         interminavelmente. O principio do SOLID utilizado foi o principio do
+ *         "Aberto\Fechado" onde a estratÃ©gia adotada foi criar classes
+ *         especificas para cuidar de cada validaÃ§Ã£o e uma interface que vai
+ *         servir de molde para as classes de validaÃ§Ã£o. Assim se for preciso
+ *         alterar uma validaÃ§Ã£o ou criar uma nova basta fazer a alteraÃ§Ã£o em un
+ *         Ãºnico ponto dexando a classe mais extensivel. A classe fica aberta
+ *         para extensÃµes mais fechada para modificaÃ§Ãµes
  */
 public class ReajusteService {
 
+	private List<ValidacaoReajuste> validacoes;
+
+	public ReajusteService(List<ValidacaoReajuste> validacoes) {
+		this.validacoes = validacoes;
+	}
+
 	public void reajustarSalarioDoFuncionario(Funcionario funcionario, BigDecimal aumento) {
-		BigDecimal salarioAtual = funcionario.getSalario();
-		BigDecimal percentualReajuste = aumento.divide(salarioAtual, RoundingMode.HALF_UP);
-		if (percentualReajuste.compareTo(new BigDecimal("0.4")) > 0) {
-			throw new ValidacaoException("Reajuste nao pode ser superior a 40% do salario!");
-		}
-		BigDecimal salarioReajustado = salarioAtual.add(aumento);
+
+		this.validacoes.forEach(validacao -> validacao.validar(funcionario, aumento));
+
+		BigDecimal salarioReajustado = funcionario.getSalario().add(aumento);
 		funcionario.atualizarSalario(salarioReajustado);
 	}
 }
