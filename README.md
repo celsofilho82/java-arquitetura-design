@@ -24,6 +24,8 @@ Também conhecer os 5 princípios do SOLID, que são práticas pensando em facil
 
 Começar a ver mais práticas e padrões, entender um pouco sobre modelagem orientada e objetos e conhecer os famosos padrões de projeto usando Java.
 
+[Design Patterns em Java I: Introdução às boas práticas de programação](Design-Patterns-01)
+
 ## Testes
 
 Escrever um código que não funciona é algo muito normal na carreira de um desenvolvedor, e deixar essa falha passar pode sair muito caro para a empresa. Por esse motivo existe os testes automatizados, conhecer alguns tipos de teste que são usados, e praticar TDD, testes de unidade e testes de integração e aplicar o BDD.
