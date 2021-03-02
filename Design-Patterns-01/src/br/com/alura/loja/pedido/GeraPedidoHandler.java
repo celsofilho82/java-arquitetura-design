@@ -5,8 +5,6 @@ import java.util.List;
 
 import br.com.alura.loja.orcamento.Orcamento;
 import br.com.alura.loja.pedido.acao.AcaoAposGerarPedido;
-import br.com.alura.loja.pedido.acao.EnviarEmail;
-import br.com.alura.loja.pedido.acao.SalvarPedidoNoBanco;
 
 public class GeraPedidoHandler {
 
@@ -24,6 +22,11 @@ public class GeraPedidoHandler {
 	 * O nosso Command Handler não precisa saber detalhe específico, então é
 	 * interessante que cada classe seja responsável apenas por uma pequena tarefa.
 	 * 
+	 * Utilizamos aqui o padrão Observer e definimos as classes EnviarEmail e
+	 * SalvarPedidoNoBanco como observadores. O padrão Observer é comumente
+	 * utilizado por diversas bibliotecas que trabalham com eventos. Muitas
+	 * tecnologias em Java, como o Spring e o CDI, possuem componentes que nos
+	 * auxiliam a trabalhar com eventos.
 	 */
 
 	private List<AcaoAposGerarPedido> acoes;
