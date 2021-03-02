@@ -63,9 +63,8 @@
       O que aprendemos?
       Conclusão
 
-<!-- # Certificado de conclusão
+# Certificado de conclusão
 
 https://cursos.alura.com.br/certificate/9f6eb204-4029-4052-a585-a2b8783dbab3
 
 ![certificado](certificate-alura.png)
- -->
