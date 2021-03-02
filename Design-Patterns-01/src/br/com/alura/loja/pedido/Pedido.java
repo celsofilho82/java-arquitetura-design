@@ -7,9 +7,7 @@ import br.com.alura.loja.orcamento.Orcamento;
 public class Pedido {
 
 	private String cliente;
-
 	private LocalDateTime data;
-
 	private Orcamento orcamento;
 
 	public Pedido(String cliente, LocalDateTime data, Orcamento orcamento) {
