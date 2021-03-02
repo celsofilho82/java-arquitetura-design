@@ -65,6 +65,6 @@
 
 # Certificado de conclusão
 
-https://cursos.alura.com.br/certificate/9f6eb204-4029-4052-a585-a2b8783dbab3
+https://cursos.alura.com.br/certificate/fd79decb-ad53-48c7-a54d-c3cfcf624296
 
 ![certificado](certificate-alura.png)
