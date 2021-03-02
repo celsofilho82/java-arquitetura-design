@@ -25,6 +25,7 @@ Também conhecer os 5 princípios do SOLID, que são práticas pensando em facil
 Começar a ver mais práticas e padrões, entender um pouco sobre modelagem orientada e objetos e conhecer os famosos padrões de projeto usando Java.
 
 [Design Patterns em Java I: Introdução às boas práticas de programação](Design-Patterns-01)
+
 [Design Patterns em Java II: Avançando nas boas práticas de programação](Design-Patterns-02)
 
 ## Testes
